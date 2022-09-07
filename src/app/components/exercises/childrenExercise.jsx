@@ -10,12 +10,22 @@ const ChildrenExercise = () => {
                 <code>React.Children.map</code> так и{" "}
                 <code>React.Children.toArray</code>
             </p>
-
-            <Component />
-            <Component />
-            <Component />
+            <OrderedList>
+                <Component />
+                <Component />
+                <Component />
+            </OrderedList>
         </CollapseWrapper>
     );
+};
+
+const OrderedList = ({ children }) => {
+    return React.Children.map(children, (child, i) => (
+        <div key={i} className="d-flex flex-row w-50 my-2">
+            <span className="badge bg-warning mx-3">{i + 1}</span>
+            {child}
+        </div>
+    ));
 };
 
 const Component = () => {
